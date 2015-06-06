@@ -11,14 +11,7 @@ end
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-<<<<<<< HEAD
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-=======
 gem 'bootstrap-sass'
->>>>>>> Incoming_Emails
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -28,8 +21,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-<<<<<<< HEAD
-=======
 gem 'devise'
 gem 'figaro'
->>>>>>> Incoming_Emails
