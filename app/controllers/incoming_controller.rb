@@ -5,13 +5,9 @@ class IncomingController < ApplicationController
     user = User.find_by(email: params[:sender])
     subject = params[:subject]
     content = params[:'body-plain']
-
     topic = user.topics.find_or_create_by(title: subject)
-
     bookmark = topic.bookmarks.build(topic: topic, url: content)
 
-    if bookmark.save
-      head 200
-    end
+    bookmark.save
   end
 end
