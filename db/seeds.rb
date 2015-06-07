@@ -28,3 +28,12 @@
  )
  admin.skip_confirmation!
  admin.save!
+
+ # Create an standard test user
+ admin = User.new(
+   name:     'Alan Carden',
+   email:    'acarden120@gmail.com',
+   password: 'abc654321',
+ )
+ admin.skip_confirmation!
+ admin.save!
