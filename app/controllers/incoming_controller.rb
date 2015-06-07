@@ -9,7 +9,7 @@ class IncomingController < ApplicationController
 
     topic = user.topics.find_or_create_by(title: subject)
 
-    bookmark = user.topics.bookmarks.build(topic: topic, url: content)
+    bookmark = topic.bookmarks.build(topic: topic, url: content)
 
     if bookmark.save
       head 200
