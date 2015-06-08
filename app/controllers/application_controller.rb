@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(current_user)
-    root_path(current_user)
+    topic_path(current_user)
   end
 end
