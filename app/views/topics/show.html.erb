@@ -1,15 +1,15 @@
 <div class='container'>
 <h1>My Topics</h1>
 <p>These are my topics.</p>
-
     <% @topics.each do |topic| %>
       <div class="media">
         <div class="media-body">
         <h4><b><%= link_to topic.title, topic %></b></h4>
+        <p><%= link_to "Delete", [topic], method: :delete %></p>
         	  	<ul><% topic.bookmarks.each do |bookmark| %>
         		    <li><%= link_to bookmark.url, bookmark.url %></li>
         	<% end %>
-            </ul>
+            </ul><br><br>
         </div>
       </div>
     <% end %>
