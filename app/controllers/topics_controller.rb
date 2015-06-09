@@ -1,22 +1,19 @@
 class TopicsController < ApplicationController
-  include Pundit
-
   def index
-  	@topics = Topic.all
+    @topics = Topic.all
   end
 
   def show
-  	@topics = Topic.all
-    authorize @topics
+    @topics = Topic.all
   end
 
   def new
-  	@topic = Topic.new
+    @topic = Topic.new
   end
 
   def create
-  	@user = current_user
-  	@topic = current_user.topics.build(topics_params)
+    @user = current_user
+    @topic = current_user.topics.build(topics_params)
     @topic.user = @user
 
     if @topic.save
