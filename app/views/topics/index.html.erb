@@ -1,2 +1,18 @@
-<h1>Topics#index</h1>
-<p>Find me in app/views/topics/index.html.erb</p>
+<div class='container'>
+<h2>Topics</h2>
+    <% @topics.each do |topic| %>
+      <div class="media">
+        <div class="media-body">
+        <h4><b>#<%= link_to topic.title, [topic] %></b></h4>
+        <p><%= link_to "Delete", [topic], method: :delete %></p>
+        	  	<ul><% topic.bookmarks.each do |bookmark| %>
+        		    <li><%= link_to bookmark.url, bookmark.url %></li>
+        	<% end %>
+            </ul>
+      </div>
+    <% end %>
+	<div>
+	  <br><br><br><br><b>Add new topic</b>
+      <%= render partial: 'topics/form', locals: {user: @user, topic: @topic} %>
+	</div>
+</div>

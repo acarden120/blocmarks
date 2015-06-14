@@ -1,20 +1,16 @@
 <div class='container'>
-<h1>My Topics</h1>
-<p>These are my topics.</p>
-    <% @topics.each do |topic| %>
+<h1><% @topic.title %></h1>
       <div class="media">
         <div class="media-body">
-        <h4><b><%= link_to topic.title, topic %></b></h4>
-        <p><%= link_to "Delete", [topic], method: :delete %></p>
-        	  	<ul><% topic.bookmarks.each do |bookmark| %>
+   	  	<ul><% @topic.bookmarks.each do |bookmark| %>
         		    <li><%= link_to bookmark.url, bookmark.url %></li>
         	<% end %>
-            </ul><br><br>
+            </ul>
+            <div>
+             <b>Add new bookmark</b>
+               <%= render partial: 'bookmarks/form', locals: {topic: @topic} %>
+             </b>
+            <br><br>
         </div>
       </div>
-    <% end %>
-	<div>
-	  <br><h3>Add new topic</h3>
-      <%= render partial: 'topics/form', locals: {user: @user, topic: @topic} %>
-	</div>
 </div>

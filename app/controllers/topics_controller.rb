@@ -1,10 +1,16 @@
 class TopicsController < ApplicationController
+  include Pundit
+
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @topics = Topic.all
   end
 
   def show
-    @topics = Topic.all
+    user = current_user
+    @topic = Topic.find(params[:id])
+    authorize @topic
   end
 
   def new
@@ -18,7 +24,7 @@ class TopicsController < ApplicationController
 
     if @topic.save
       flash[:notice] = 'Topic was created.'
-      redirect_to topic_path(current_user)
+      redirect_to topics_path(current_user)
     else
       flash[:error] = 'There was an error saving the topic. Please try again.'
     end
