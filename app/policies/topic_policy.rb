@@ -1,5 +1,5 @@
 class TopicPolicy < ApplicationPolicy
   def show?
-    true
+    user.present?
   end
 end
