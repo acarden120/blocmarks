@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
   end
 
   def new
-  	@bookmark = Bookmark.new
+    @bookmark = Bookmark.new
   end
 
   def create
@@ -12,19 +12,15 @@ class BookmarksController < ApplicationController
     @url = bookmark_params[:url]
     bookmark = @topic.bookmarks.build(topic: @topic, url: @url)
 
-    if bookmark.save
-      redirect_to topics_path(current_user)
-    else
-      flash[:error] = 'There was an error saving the bookmark. Please try again.'
-    end    
+    bookmark.save
+    redirect_to topics_path(current_user)
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
 
     if @bookmark.destroy
-      flash[:notice] = 'Bookmark was deleted.'
-      redirect_to topics_path(current_user)
+      redirect_to topics_path(current_user), notice: 'Bookmark was deleted'
     else
       flash[:error] = 'There was an error deleting the topic. Please try again.'
     end
@@ -39,12 +35,8 @@ class BookmarksController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @bookmark = @topic.bookmarks.find(params[:id])
 
-    if @bookmark.update_attributes(params.require(:bookmark).permit(:url))
-      redirect_to topics_path, notice: "Bookmark was updated"
-    else
-      flash[:error] = "There was an error updating the bookmark. Please try again."
-      render :edit
-    end
+    @bookmark.update_attributes(bookmark_params)
+    redirect_to topics_path, notice: 'Bookmark was updated'
   end
 
   private

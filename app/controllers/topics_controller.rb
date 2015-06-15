@@ -8,7 +8,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    user = current_user
     @topic = Topic.find(params[:id])
     authorize @topic
   end
@@ -39,10 +38,6 @@ class TopicsController < ApplicationController
     else
       flash[:error] = 'There was an error deleting the topic. Please try again.'
     end
-  end
-
-  def update
-    
   end
 
   private
