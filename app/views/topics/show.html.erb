@@ -1,15 +1,16 @@
 <div class='container'>
-<h1><% @topic.title %></h1>
+<h3><%= @topic.title %></h3>
       <div class="media">
         <div class="media-body">
    	  	<ul><% @topic.bookmarks.each do |bookmark| %>
         		    <li><%= link_to bookmark.url, bookmark.url %></li>
         	<% end %>
             </ul>
-            <div>
+            <div><% if current_user %>
              <b>Add new bookmark</b>
                <%= render partial: 'bookmarks/form', locals: {topic: @topic} %>
              </b>
+             <% end %>
             <br><br>
         </div>
       </div>

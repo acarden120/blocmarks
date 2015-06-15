@@ -35,7 +35,7 @@ class TopicsController < ApplicationController
 
     if @topic.destroy
       flash[:notice] = 'Topic was deleted.'
-      redirect_to topic_path(current_user)
+      redirect_to topics_path(current_user)
     else
       flash[:error] = 'There was an error deleting the topic. Please try again.'
     end
