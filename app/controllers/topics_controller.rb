@@ -41,7 +41,8 @@ class TopicsController < ApplicationController
     end
   end
 
-  def edit
+  def update
+    
   end
 
   private
