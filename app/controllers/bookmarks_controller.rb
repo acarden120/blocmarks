@@ -1,6 +1,8 @@
 class BookmarksController < ApplicationController
   include Pundit
 
+  before_action :authenticate_user! # , only: [:new, :create]
+
   def new
     @bookmark = Bookmark.new
   end
