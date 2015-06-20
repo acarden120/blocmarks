@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   include Pundit
 
-  before_action :authenticate_user! # , only: [:new, :create]
+  before_action :authenticate_user!
 
   def new
     @bookmark = Bookmark.new
@@ -21,7 +21,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
- 
+
     if @bookmark.destroy
       redirect_to topics_path(current_user), notice: 'Bookmark was deleted'
     else

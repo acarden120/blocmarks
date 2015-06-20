@@ -1,4 +1,3 @@
-<%= puts "this is user problm: #{topic}" %> 
 <ul><% topic.bookmarks.each do |bookmark| %>
 	<li><b><%= link_to bookmark.url, bookmark.url %></b></li>
     <% if policy(topic).destroy? %>

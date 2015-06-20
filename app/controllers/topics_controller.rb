@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   include Pundit
 
-  before_action :authenticate_user! , only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @topics = Topic.all
