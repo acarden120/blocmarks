@@ -3,16 +3,16 @@
       <div class="media">
         <div class="media-body">
    	  	<ul><% @topic.bookmarks.each do |bookmark| %>
-        		    <li><b><%= link_to bookmark.url, bookmark.url %></b></li>
-                <% if policy(current_user).destroy? %>
+        		<li><b><%= link_to bookmark.url, bookmark.url %></b></li>
+                <% if policy(@topic).destroy? %>
                 <p><%= link_to "Delete", topic_bookmark_path(@topic, bookmark), method: :delete, data: {confirm: 'Are you sure you want to delete bookmark?'} %> 
                 <% end %>
-                <% if policy(current_user).edit? %>
+                <% if policy(@topic).update? %>
                  | <%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %></p><br>
                 <% end %>
         	<% end %>
             </ul>
-            <div><% if current_user %>
+            <div><% if policy(@topic).create? %>
              <b>Add new bookmark</b>
                <%= render partial: 'bookmarks/form', locals: {topic: @topic} %>
              </b>
