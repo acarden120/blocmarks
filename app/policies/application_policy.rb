@@ -34,6 +34,10 @@ class ApplicationPolicy
     user.present? && (record.user == user)
   end
 
+  def like?
+    user.present?
+  end
+
   def scope
     Pundit.policy_scope!(user, record.class)
   end
