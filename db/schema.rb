@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620171319) do
+ActiveRecord::Schema.define(version: 20150621110017) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.string   "url"
@@ -20,12 +20,19 @@ ActiveRecord::Schema.define(version: 20150620171319) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "bookmarks", ["id"], name: "index_bookmarks_on_id", unique: true
   add_index "bookmarks", ["topic_id"], name: "index_bookmarks_on_topic_id"
 
   create_table "likes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "bookmark_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "likes", ["bookmark_id"], name: "index_likes_on_bookmark_id"
+  add_index "likes", ["id"], name: "index_likes_on_id", unique: true
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "topics", force: :cascade do |t|
     t.string   "title"
@@ -57,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150620171319) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["id"], name: "index_users_on_id", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

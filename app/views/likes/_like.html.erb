@@ -1,5 +1,11 @@
 <div>
-	<%= link_to topic_bookmark_likes_path(bookmark, Like.new), class: 'btn btn-primary', method: :post do %>
-	  <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
-	<% end %>
+  <% if like = current_user.liked(@bookmark) %>
+    <%= link_to [bookmark, like], class: 'btn btn-danger', method: :delete do %>
+      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+    <% end %>
+  <% else %>
+    <%= link_to [bookmark, like.new], class: 'btn btn-primary', method: :post do %>
+      <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
+    <% end %>
+  <% end %>
 </div>
