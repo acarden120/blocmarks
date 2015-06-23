@@ -13,8 +13,8 @@
   </div>
 <% end %>
   <% if current_user %>
-	<div><br><br><b>Add new topic</b>
+  <div><br><br><b>Add new topic</b>
       <%= render partial: 'topics/form', locals: {user: @user, topic: @topic} %>
-	</div>
+  </div>
   <% end %>
 </div>

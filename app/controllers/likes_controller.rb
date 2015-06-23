@@ -23,11 +23,17 @@ class LikesController < ApplicationController
   def destroy
     # Get the bookmark from the params
     # Find the current user's like with the ID in the params
+#    @bookmark = Bookmark.find(params[:bookmark_id])
+    like = current_user.likes.find(params[:id])
+
+#    like = current_user.likes.build(bookmark_id: @bookmark.id)
 
     if like.destroy
       # Flash success and redirect to @bookmark
+      redirect_to topics_path(current_user)
     else
       # Flash error and redirect to @bookmark
+      flash[:error] = "There was an error saving the Favorite. Please try again."
     end
   end
 end
