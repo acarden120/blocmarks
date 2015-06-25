@@ -1,5 +1,6 @@
 <ul><% topic.bookmarks.each do |bookmark| %>
-  <li><b><%= link_to bookmark.url, topic_bookmark_path(topic, bookmark) %></b></li>
+  <li><b><%= link_to bookmark.url, bookmark.url %></b></li>
+  <li><b><%= link_to bookmark.url, [topic, bookmark] %></b></li>
     <% if policy(topic).destroy? %>
     <p><%= link_to "Delete", topic_bookmark_path(topic, bookmark), method: :delete, data: {confirm: 'Are you sure you want to delete bookmark?'} %> 
     <% end %>
@@ -10,15 +11,15 @@
    <div>
     <% if policy(Like.new).create? %>
      <% if like = current_user.liked(bookmark) %>
-       <%= link_to [topic, bookmark, like], class: 'btn btn-danger', method: :delete do %>
+      <%= link_to [topic, bookmark, like], class: 'btn btn-danger', method: :delete do %>
          <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
        <% end %>
      <% else %>
-       <%= link_to [topic, bookmark, Like.new], class: 'btn btn-primary', method: :post do %>
+      <%= link_to [topic, bookmark, Like.new], class: 'btn btn-primary', method: :post do %>
          <i class="glyphicon glyphicon-star"> </i>&nbsp; like
        <% end %>
      <% end %>
-     <% end %>
+     <% end %><br><br>
    </div>
 <% end %>
 </ul>
