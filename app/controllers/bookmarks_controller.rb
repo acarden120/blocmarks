@@ -19,11 +19,9 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    # @topic = Topic.where(topic_id: params[:topic_id])   ====> [topic1, topic2, topic3....]
     @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
     @bookmarks = Bookmark.all
-    #authorize @bookmark
     @topic = @bookmark.topic
   end
 

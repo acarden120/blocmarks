@@ -15,25 +15,16 @@ class LikesController < ApplicationController
       flash[:notice] = 'Bookmark was liked.'
       redirect_to topics_path(current_user)
     else
-      flash[:error] = "There was an error saving the Favorite. Please try again."
-      # Add code to generate a failure flash and redirect to @bookmark
+      flash[:error] = 'There was an error saving the like. Please try again.'
     end
   end
 
   def destroy
-    # Get the bookmark from the params
-    # Find the current user's like with the ID in the params
-#    @bookmark = Bookmark.find(params[:bookmark_id])
     like = current_user.likes.find(params[:id])
-
-#    like = current_user.likes.build(bookmark_id: @bookmark.id)
-
     if like.destroy
-      # Flash success and redirect to @bookmark
       redirect_to topics_path(current_user)
     else
-      # Flash error and redirect to @bookmark
-      flash[:error] = "There was an error saving the Favorite. Please try again."
+      flash[:error] = 'There was an error liking the bookmark. Please try again.'
     end
   end
 end

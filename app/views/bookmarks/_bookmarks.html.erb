@@ -1,6 +1,5 @@
 <ul><% topic.bookmarks.each do |bookmark| %>
   <li><b><%= link_to bookmark.url, bookmark.url %></b></li>
-  <li><b><%= link_to bookmark.url, [topic, bookmark] %></b></li>
     <% if policy(topic).destroy? %>
     <p><%= link_to "Delete", topic_bookmark_path(topic, bookmark), method: :delete, data: {confirm: 'Are you sure you want to delete bookmark?'} %> 
     <% end %>
