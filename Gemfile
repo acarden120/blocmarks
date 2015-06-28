@@ -20,12 +20,7 @@ gem 'figaro'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-  gem 'rubocop'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pundit'
-gem 'faker'
-gem 'stripe'
-gem 'redcarpet'
-gem 'will_paginate', '~> 3.0.5'
