@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   def liked(post)
     likes.where(bookmark_id: post.id).first
   end
+
 end
