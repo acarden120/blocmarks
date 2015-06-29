@@ -5,6 +5,6 @@ class UsersController < ApplicationController
   	user = current_user
   	bookmarks = Bookmark.all
   	@user_bookmarks = user.bookmarks.all
-  	@liked_bookmarks = user.bookmarks.where()
+  	@liked_bookmarks = user.bookmarks.all
   end
 end

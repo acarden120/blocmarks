@@ -1,5 +1,5 @@
 <div class='container'>
-<h2>My Bookmarks</h2>
+<h3>My Bookmarks</h3>
 <% @user_bookmarks.each do |bookmark| %>
   <div class="media">
     <div class="media-body">
@@ -9,6 +9,19 @@
     <h4><b><%= bookmark.url %></b></h4>
     <% end %>        
     <% if policy(bookmark).destroy? %><p><%= link_to "Delete", bookmark.url, method: :delete %></p><% end %>
+      <%#= render partial: 'bookmarks/bookmarks', locals: {topic: topic} %>
+  </div>
+<% end %>
+<h3>Bookmarks I've liked</h3>
+<% @liked_bookmarks.each do |bklike| %>
+  <div class="media">
+    <div class="media-body">
+    <% if current_user %>
+    <h4><b><%= link_to bklike.url, bklike.url %></b></h4>
+    <% else %>
+    <h4><b><%= bklike.url %></b></h4>
+    <% end %>        
+    <% if policy(bklike).destroy? %><p><%= link_to "Delete", bklike.url, method: :delete %></p><% end %>
       <%#= render partial: 'bookmarks/bookmarks', locals: {topic: topic} %>
   </div>
 <% end %>
