@@ -8,7 +8,7 @@
     <% else %>
     <h4><b><%= bookmark.url %></b></h4>
     <% end %>        
-    <% if policy(bookmark).destroy? %><p><%= link_to "Delete", [bookmark], method: :delete %></p><% end %>
+    <% if policy(bookmark).destroy? %><p><%= link_to "Delete", bookmark.url, method: :delete %></p><% end %>
       <%#= render partial: 'bookmarks/bookmarks', locals: {topic: topic} %>
   </div>
 <% end %>
