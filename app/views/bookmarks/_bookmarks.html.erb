@@ -6,7 +6,7 @@
     <% if policy(bookmark).update? %>
      | <%= link_to "Edit", edit_topic_bookmark_path(topic, bookmark) %>
     <% end %>
-     <%#= render partial: 'likes/like', locals: {topic: topic, bookmark: bookmark } %>
+     <%= render partial: 'likes/like', locals: {topic: topic, bookmark: bookmark } %>
    <div>
     <% if policy(Like.new).create? %>
      <% if like = current_user.liked(bookmark) %>
