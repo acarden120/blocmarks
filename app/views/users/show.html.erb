@@ -6,16 +6,12 @@
   </div>
 <% end %>
 <h3>Bookmarks I've liked</h3>
+<h1><% @liked_bookmarks.count %></h1>
 <% @liked_bookmarks.each do |bklike| %>
   <div class="media">
     <div class="media-body">
-    <% if current_user %>
-    <h4><b><%= link_to bklike.url, bklike.url %></b></h4>
-    <% else %>
-    <h4><b><%= bklike.url %></b></h4>
-    <% end %>        
-    <% if policy(bklike).destroy? %><p><%= link_to "Delete", bklike.url, method: :delete %></p><% end %>
-      <%#= render partial: 'bookmarks/bookmarks', locals: {topic: topic} %>
+    <h4><b><%= link_to bklike.bookmark.url, bklike.bookmark.url %></b></h4>
+    <%= render partial: 'likes/like', locals: {topic: bklike.bookmark.topic, bookmark: bklike.bookmark  } %>
   </div>
 <% end %>
 </div>

@@ -1,11 +1,7 @@
 class LikesController < ApplicationController
   include Pundit
 
-  before_action :authenticate_user!, only: [:create]
-
-  def new
-    @like = Like.new
-  end
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
     @bookmark = Bookmark.find(params[:bookmark_id])

@@ -6,19 +6,8 @@
     <% if policy(bookmark).update? %>
      | <%= link_to "Edit", edit_topic_bookmark_path(topic, bookmark) %>
     <% end %>
-     <%= render partial: 'likes/like', locals: {topic: topic, bookmark: bookmark } %>
-   <div>
-    <% if policy(Like.new).create? %>
-     <% if like = current_user.liked(bookmark) %>
-      <%= link_to [topic, bookmark, like], class: 'btn btn-danger', method: :delete do %>
-         <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
-       <% end %>
-     <% else %>
-      <%= link_to [topic, bookmark, Like.new], class: 'btn btn-primary', method: :post do %>
-         <i class="glyphicon glyphicon-star"> </i>&nbsp; like
-       <% end %>
-     <% end %>
-     <% end %><br><br>
+      <%= render partial: 'likes/like', locals: {topic: topic, bookmark: bookmark } %>
+   <div><br><br>
    </div>
 <% end %>
 </ul>

@@ -11,7 +11,7 @@ class BookmarksController < ApplicationController
     @user = current_user
     @topic = @user.topics.find(params[:topic_id])
     @url = bookmark_params[:url]
-    bookmark = @topic.bookmarks.build(url: @url)
+    bookmark = @topic.bookmarks.build(url: @url, user: @user)
     authorize bookmark
 
     bookmark.save

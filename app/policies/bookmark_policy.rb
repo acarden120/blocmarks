@@ -18,4 +18,8 @@ class BookmarkPolicy < ApplicationPolicy
   def edit?
     update?
   end
+
+  def like?
+    user.present? && (record.user != user)
+  end
 end
