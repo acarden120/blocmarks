@@ -1,4 +1,3 @@
-<%# binding.pry %>
 <% if policy(Like.new(bookmark: bookmark)).create? %>
 <div>
   <% if like2 = current_user.liked(bookmark) %>
