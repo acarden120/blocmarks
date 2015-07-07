@@ -1,15 +1,16 @@
 <div class='container'>
 <h3>My Bookmarks</h3>
 <% @user_bookmarks.each do |topic| %>
+  <h4><%= topic.title %></h4>
   <div class="media">
     <%= render partial: 'bookmarks/bookmarks', locals: {topic: topic} %>
   </div>
 <% end %>
 <h3>Bookmarks I've liked</h3>
-<h1><% @liked_bookmarks.count %></h1>
 <% @liked_bookmarks.each do |bklike| %>
   <div class="media">
     <div class="media-body">
+    <h4><%= bklike.bookmark.topic.title %></h4>
     <h4><b><%= link_to bklike.bookmark.url, bklike.bookmark.url %></b></h4>
     <%= render partial: 'likes/like', locals: {topic: bklike.bookmark.topic, bookmark: bklike.bookmark  } %>
   </div>
