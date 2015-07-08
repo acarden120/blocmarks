@@ -11,11 +11,11 @@ class ApplicationPolicy
   end
 
   def show?
-    user.present?
+    true
   end
 
   def create?
-    user.present? && (record.user == user)
+    user.present?
   end
 
   def new?

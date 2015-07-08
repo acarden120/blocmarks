@@ -11,11 +11,18 @@ class BookmarksController < ApplicationController
     @user = current_user
     @topic = @user.topics.find(params[:topic_id])
     @url = bookmark_params[:url]
-    bookmark = @topic.bookmarks.build(topic: @topic, url: @url)
+    bookmark = @topic.bookmarks.build(url: @url, user: @user)
     authorize bookmark
 
     bookmark.save
     redirect_to topics_path(current_user)
+  end
+
+  def show
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = Bookmark.find(params[:id])
+    @bookmarks = Bookmark.all
+    @topic = @bookmark.topic
   end
 
   def destroy

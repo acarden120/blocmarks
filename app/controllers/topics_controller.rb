@@ -9,7 +9,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    authorize @topic
   end
 
   def new

@@ -1,4 +1,8 @@
 class BookmarkPolicy < ApplicationPolicy
+  def show?
+    true
+  end
+
   def create?
     user.present? && (record.topic.user == user)
   end
@@ -13,5 +17,9 @@ class BookmarkPolicy < ApplicationPolicy
 
   def edit?
     update?
+  end
+
+  def like?
+    user.present? && (record.user != user)
   end
 end
