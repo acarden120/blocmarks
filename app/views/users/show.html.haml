@@ -11,4 +11,6 @@
         %h4= bklike.bookmark.topic.title
         %h4
           %b= link_to bklike.bookmark.url, bklike.bookmark.url
+          = render partial: 'bookmarks/preview', locals: {url: bklike.bookmark.url}
         = render partial: 'likes/like', locals: {topic: bklike.bookmark.topic, bookmark: bklike.bookmark  }
+        = link_to get_preview(bklike.bookmark.url)
