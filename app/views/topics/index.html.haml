@@ -1,0 +1,20 @@
+.container
+  %h2 Topics
+  - @topics.each do |topic|
+    .media
+      .media-body
+        - if current_user
+          %h4
+            %b= link_to topic.title, [topic]
+        - else
+          %h4
+            %b= topic.title
+        - if policy(topic).destroy?
+          %p= link_to "Delete", [topic], method: :delete
+        = render partial: 'bookmarks/bookmarks', locals: {topic: topic}
+  - if current_user
+    %div
+      %br
+        %br
+          %b Add new topic
+          = render partial: 'topics/form', locals: {user: @user, topic: @topic}

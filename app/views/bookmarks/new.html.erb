@@ -1,9 +1,0 @@
-<%= form_for [@topic, @bookmark] do |f| %>
-  <div class='container'>
-  <div class='row'>
-  	<h3>Add new bookmark url:</h3><br>
-    <div class='col-md-8'><b><%= f.text_field :url, :size => '25%', placeholder: "  Enter the new bookmark here" %></b></div><br><br>
-    <div class='col-md-8'><b><%= f.submit 'Create', class: 'btn btn-success' %></b></div>
-  </div>
-</div>
-<% end %>

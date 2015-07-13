@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
+    @topic = Topic.friendly.find(params[:id])
 
     if @topic.destroy
       flash[:notice] = 'Topic was deleted.'

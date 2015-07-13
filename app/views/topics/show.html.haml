@@ -1,0 +1,11 @@
+.container
+  %h3= @topic.title
+  .media
+    .media-body
+      = render partial: 'bookmarks/bookmarks', locals: {topic: @topic}
+      %div
+        - if policy(@topic).create?
+          %b Add new bookmark
+          = render partial: 'bookmarks/form', locals: {topic: @topic}
+        %br
+          %br

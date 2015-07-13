@@ -1,0 +1,11 @@
+= form_for [@topic, @bookmark] do |f|
+  .container
+    .row
+      %h3 Add new bookmark url:
+      %br
+        .col-md-8
+          %b= f.text_field :url, :size => '25%', placeholder: "  Enter the new bookmark here"
+        %br
+          %br
+            .col-md-8
+              %b= f.submit 'Create', class: 'btn btn-success'

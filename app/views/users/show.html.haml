@@ -1,0 +1,15 @@
+.container
+  %h3 My Bookmarks
+  - @user_bookmarks.each do |topic|
+    %h4= topic.title
+    .media
+      = render partial: 'bookmarks/bookmarks', locals: {topic: topic}
+  %h3 Bookmarks I've liked
+  - @liked_bookmarks.each do |bklike|
+    .media
+      .media-body
+        %h4= bklike.bookmark.topic.title
+        %h4
+          %b= link_to bklike.bookmark.url, bklike.bookmark.url
+          = render partial: 'bookmarks/preview', locals: {url: bklike.bookmark.url}
+        = render partial: 'likes/like', locals: {topic: bklike.bookmark.topic, bookmark: bklike.bookmark  }
